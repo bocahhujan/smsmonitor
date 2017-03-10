@@ -22,6 +22,7 @@ Module containing the serial port connection dialog.
 # 3rd party modules
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+import platform
 import serial
 
 SERIAL_PORT_TIMEOUT = 0.5
@@ -119,7 +120,10 @@ class ConnectDlg(QDialog):
                 #self.port_box.addItem(s.portstr)
                 #print s.portstr
                 #s.close()
-                port = '/dev/ttyUSB'+str(i)
+                if(platform.system() == 'Linux'):
+                    port = '/dev/ttyUSB'+str(i)
+                else;
+                    port = "COM"+str(i) 
                 #print port
                 s = serial.Serial(port)
             except serial.SerialException:
