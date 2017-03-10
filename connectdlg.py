@@ -122,8 +122,8 @@ class ConnectDlg(QDialog):
                 #s.close()
                 if(platform.system() == 'Linux'):
                     port = '/dev/ttyUSB'+str(i)
-                else;
-                    port = "COM"+str(i) 
+                else:
+                    port = "COM"+str(i)
                 #print port
                 s = serial.Serial(port)
             except serial.SerialException:
