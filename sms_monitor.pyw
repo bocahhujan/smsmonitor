@@ -68,7 +68,7 @@ class MainWindow(QMainWindow):
 
         # Setup the window settings
         self.setWindowTitle(self.tr(APP_NAME))
-        self.setMinimumSize(540, 400)
+        self.setMinimumSize(550, 400)
 
         # Create actions
         file_exit_action = QAction(self.tr('E&xit'), self)
@@ -208,7 +208,6 @@ if __name__ == '__main__':
 
     # Create a QApplication instance
     app = QApplication(sys.argv)
-    #app = QCoreApplication(sys.argv)
     app.setWindowIcon(QIcon(':/images/mobile_phone.png'))
     app.setApplicationName(APP_NAME)
     app.setOrganizationName(ORGANIZATION)

@@ -115,10 +115,13 @@ class ConnectDlg(QDialog):
         # Populate the port number combo box (attempt to connect to all possible ports)
         for i in range(256):
             try:
-                s = serial.Serial("COM"+str(i))
-                self.port_box.addItem(s.portstr)
-                # print s.portstr
-                s.close()
+                #s = serial.Serial("/dev/ttyUSB"+str(i))
+                #self.port_box.addItem(s.portstr)
+                #print s.portstr
+                #s.close()
+                port = '/dev/ttyUSB'+str(i)
+                #print port
+                s = serial.Serial(port)
             except serial.SerialException:
                 pass
             else:

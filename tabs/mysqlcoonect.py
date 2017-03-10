@@ -24,6 +24,7 @@ Module containing the "Basic Info" commands class/widget.
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtSql import *
+import platform
 import sys
 
 class MysqlcoonectWidget(QWidget):
@@ -32,7 +33,9 @@ class MysqlcoonectWidget(QWidget):
     """
     TITLE = 'Database Conection'
     #db 	= QSqlDatabase.addDatabase("QMYSQL")
-    app = QApplication(sys.argv)
+    if(platform.system() != 'Linux'):
+        app = QApplication(sys.argv)
+
     settings = QSettings('mjnapp', 'smsmonitor')
     dbc = QSqlDatabase.addDatabase("QMYSQL")
 
