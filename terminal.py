@@ -170,7 +170,7 @@ class TerminalWidget(QWidget):
         try:
             buffer_size = self.serial_conn.inWaiting()
             if buffer_size:
-                current_text = str(self.log.toPlainText().encode('ascii', 'ignore'))
+                current_text = str(self.log.toPlainText()).encode('ascii', 'ignore')
                 new_text = self.serial_conn.read(buffer_size)
                 new_text = new_text.replace('\r\n', '\n')
                 new_text = new_text.replace('\r', '')

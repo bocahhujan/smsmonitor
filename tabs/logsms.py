@@ -77,7 +77,7 @@ class LogsmsWidget(QWidget):
         self.tableWidget.setItem(rowPosition , 0, QTableWidgetItem(str(nohp)))
         self.tableWidget.setItem(rowPosition , 1, QTableWidgetItem(str(tgl)))
         self.tableWidget.setItem(rowPosition , 2, QTableWidgetItem(str(jam)))
-        self.tableWidget.setItem(rowPosition , 3, QTableWidgetItem(str(pesan)))
+        self.tableWidget.setItem(rowPosition , 3, QTableWidgetItem(str(pesan).encode('ascii', 'ignore')))
 
 if __name__ == '__main__':
     from standalone import run_standalone
