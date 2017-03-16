@@ -17,7 +17,7 @@
 
 """
 Module containing the serial port connection dialog.
-"""
+""" 
 
 # 3rd party modules
 from PyQt4.QtCore import *
