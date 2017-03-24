@@ -23,6 +23,7 @@ Module containing the Terminal class/widget for serial port communication.
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtSql import *
+import string
 from datetime import datetime
 import serial
 
@@ -42,6 +43,7 @@ class TerminalWidget(QWidget):
     port via the "send_command" method.
     """
     idsms = 0
+    printable = set(string.printable)
     updateadd = pyqtSignal(str , str , str , str)
     def __init__(self, mysqlcoonect , parent=None):
         """
@@ -170,11 +172,12 @@ class TerminalWidget(QWidget):
         try:
             buffer_size = self.serial_conn.inWaiting()
             if buffer_size:
-                current_text = str(self.log.toPlainText()).encode('ascii', 'ignore')
+                current_text = self.log.toPlainText()
                 new_text = self.serial_conn.read(buffer_size)
                 new_text = new_text.replace('\r\n', '\n')
                 new_text = new_text.replace('\r', '')
-                self.smsMonitor(new_text.encode('ascii', 'ignore'));
+                new_text = filter(lambda x: x in printable, new_text)
+                self.smsMonitor(new_text);
                 self.log.setText(current_text + new_text)
 
         except serial.SerialException:
